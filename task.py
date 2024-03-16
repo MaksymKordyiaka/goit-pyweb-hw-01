@@ -1,6 +1,38 @@
+from abc import ABC, abstractmethod
 from collections import UserDict
 from datetime import datetime
 import pickle
+
+class AbstractUserInterface(ABC):
+    @abstractmethod
+    def display_message(self, message):
+        pass
+
+    @abstractmethod
+    def display_contact(self, contact):
+        pass
+
+    @abstractmethod
+    def display_contacts(self, contacts):
+        pass
+
+    @abstractmethod
+    def display_help(self, help_text):
+        pass
+
+class ConsoleUserInterface(AbstractUserInterface):
+    def display_message(self, message):
+        print(message)
+
+    def display_contact(self, contact):
+        print(contact)
+
+    def display_contacts(self, contacts):
+        for contact in contacts:
+            print(contact)
+
+    def display_help(self, help_text):
+        print(help_text)
 
 class Field:
     def __init__(self, value):
